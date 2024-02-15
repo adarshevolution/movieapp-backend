@@ -21,7 +21,11 @@ const getMoviebyId = async (req, res) => {
 
 const createMovie = async (req, res) => {
   try {
-    const movie = await movies.create(req.body);
+    const movie = await movies.create({
+      name: req.body.name,
+      publishYear: req.body.publishYear,
+      image: req.file.filename,
+    });
     return res.status(200).json(movie);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -37,7 +41,9 @@ const editMovie = async (req, res) => {
     }
     movie.name = req.body.name;
     movie.publishYear = req.body.publishYear;
-    movie.image = req.body.image;
+    if (req.file) {
+      movie.image = req.file.filename;
+    }
 
     await movie.save();
 

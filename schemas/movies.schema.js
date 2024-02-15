@@ -12,7 +12,6 @@ const MoviesSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: [true, "Please  upload an Image for this Movie"],
     },
   },
   {
