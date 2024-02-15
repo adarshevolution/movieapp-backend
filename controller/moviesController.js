@@ -24,7 +24,7 @@ const createMovie = async (req, res) => {
     const movie = await movies.create({
       name: req.body.name,
       publishYear: req.body.publishYear,
-      image: req.file.filename,
+      image: req.file?.filename,
     });
     return res.status(200).json(movie);
   } catch (error) {

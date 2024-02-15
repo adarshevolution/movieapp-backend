@@ -12,6 +12,7 @@ const MoviesSchema = mongoose.Schema(
     },
     image: {
       type: String,
+      required: [true, "please provide a valid image"],
     },
   },
   {
