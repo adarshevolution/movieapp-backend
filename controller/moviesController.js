@@ -1,8 +1,11 @@
-const movies = require("../schemas/movies.schema");
+const movies = require("../schemas/movies");
 
 const getMovie = async (req, res) => {
   try {
-    const movie = await movies.find({});
+    const movie = await movies.find(
+      { userId: req.userId }
+      // { createdAt: 0, updatedAt: 0, __v: 0 }
+    );
     return res.status(200).json(movie);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -25,6 +28,7 @@ const createMovie = async (req, res) => {
       name: req.body.name,
       publishYear: req.body.publishYear,
       image: req.file?.filename,
+      userId: req.userId,
     });
     return res.status(200).json(movie);
   } catch (error) {

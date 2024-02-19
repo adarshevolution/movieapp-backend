@@ -14,6 +14,11 @@ const MoviesSchema = mongoose.Schema(
       type: String,
       required: [true, "please provide a valid image"],
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: [true],
+    },
   },
   {
     timestamps: true,

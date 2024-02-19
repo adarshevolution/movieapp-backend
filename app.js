@@ -1,19 +1,23 @@
 const express = require("express");
 const { mongoose } = require("mongoose");
+const cors = require("cors");
 const moviesRoute = require("./routes/moviesRoute");
+const usersRoute = require("./routes/usersRoute");
 
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //route
 app.use("/movies", moviesRoute);
+app.use("/", usersRoute);
 
-app.get("/", (req, res) => {
-  return res.send("hello");
-});
+// app.get("/", (req, res) => {
+//   return res.send("hello");
+// });
 
 const dbURL =
   "mongodb+srv://adarshb:BpAxbkn6dbDnSfEH@adarsh-backend.4kqk1jp.mongodb.net/movie";
