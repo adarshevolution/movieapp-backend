@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const MoviesSchema = mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
-      required: [true, "Please enter the movie name"],
+      required: [true, "Please enter the movie title"],
     },
     publishYear: {
       type: Number,

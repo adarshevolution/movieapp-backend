@@ -25,7 +25,7 @@ const getMoviebyId = async (req, res) => {
 const createMovie = async (req, res) => {
   try {
     const movie = await movies.create({
-      name: req.body.name,
+      title: req.body.title,
       publishYear: req.body.publishYear,
       image: req.file?.filename,
       userId: req.userId,
@@ -43,7 +43,7 @@ const editMovie = async (req, res) => {
     if (!movie) {
       return res.status(404).json({ message: "Movie not found" });
     }
-    movie.name = req.body.name;
+    movie.title = req.body.title;
     movie.publishYear = req.body.publishYear;
     if (req.file) {
       movie.image = req.file.filename;
